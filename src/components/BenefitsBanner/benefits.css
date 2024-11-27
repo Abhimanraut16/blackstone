@@ -1,0 +1,56 @@
+.CountSlide {
+  width: 450px;
+  height: 350px;
+  /* border: 1px solid red; */
+  overflow: hidden;
+}
+
+.CountSlide .box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  animation-name: slider;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.CountSlide .box img {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes slider {
+  0% {
+    transform: translateX(-450px);
+  }
+
+  25% {
+    transform: translateX(-450px);
+  }
+
+  45% {
+    transform: translateX(-900px);
+  }
+
+  50% {
+    transform: translateX(-900px);
+  }
+
+  70% {
+    transform: translateX(-1350px);
+  }
+
+  75% {
+    transform: translateX(-1350px);
+  }
+
+  80% {
+    transform: translateX(-1800px);
+  }
+
+  100% {
+    transform: translateX(-1800px);
+  }
+
+}
