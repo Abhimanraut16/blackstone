@@ -1,4 +1,4 @@
-
+'use client'
 import BenefirsBanner from "@/components/BenefitsBanner/BenefirsBanner";
 import HowUse from "@/components/HowUse/HowUse";
 import Promises from "@/components/Promises/Promises";
@@ -15,8 +15,9 @@ export default function Home() {
       <BenefirsBanner/>
       <ShilajitEach/>
       <Promises/>
-      <TimeLine  />
       <HowUse/>
+      <TimeLine  />
+     
       {/* <Testimonial/> */}
     </>
   );

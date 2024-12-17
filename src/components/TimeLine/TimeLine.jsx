@@ -15,12 +15,12 @@ function TimeLine() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 0.5 } }}
         className="container flex flex-col lg:flex-row gap-12 ">
-        {/* Education Section */}
+     
         <div className="w-full lg:w-1/2 ">
 
           <div className="mt-6 lg:mt-14 w-full border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
             <TimeCard
-              title="Go Natural company established on February 15, 2019, and started selling ‘Silajit’ in the local market."
+              title="Go natural company established on February 15, 2019, and started selling ‘Silajit’ in the local market."
               result="02/15/2019"
 
             />
@@ -32,7 +32,7 @@ function TimeLine() {
           </div>
         </div>
 
-        {/* Job Experience Section */}
+   
         <div className="w-full lg:w-1/2">
           <div className="mt-6 lg:mt-14 w-full border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
             <TimeCard

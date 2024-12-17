@@ -25,6 +25,7 @@ const fadeUp = (delay) => {
         ease: easeInOut
       },
     },
+
     exit: {
       opacity: 0,
       y: 50,
@@ -38,6 +39,7 @@ const fadeUp = (delay) => {
 
   }
 }
+
 
 const slideShowData = [
 
@@ -70,15 +72,28 @@ const slideShowData = [
 ]
 
 export default function SlideShow() {
-  const [activeData, setActiveData] = React.useState(slideShowData[0])
+  const [activeIndex, setActiveIndex] = React.useState(0);
 
-  const handleActiveData = (data) => {
-    setActiveData(data)
-  }
+  // Auto-slide logic
+  React.useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setActiveIndex((prevIndex) =>
+        prevIndex === slideShowData.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000); // Slide every 3 seconds
+
+    return () => clearInterval(slideInterval); // Cleanup on unmount
+  }, []);
+
+  const handleActiveData = (index) => {
+    setActiveIndex(index);
+  };
+  const activeData = slideShowData[activeIndex];
+
   return (
-    <div>
-      <section className='bg-brandDark  text-white font-varela py-8 min-h-[87vh]'>
-        <div className="container grid grid-cols-1 md:grid-cols-2 items-center gap-0 md:gap-5 py-16">
+    <div className='bg-brandDark border-b-2 border-white  text-white font-varela md:py-1 min-h-[80vh]'>
+      <section className='border-b-4'>
+        <div className="container  grid grid-cols-1 md:grid-cols-2 items-center gap-0 md:gap-5 md:py-16  ">
 
           <div className='flex flex-col justify-center py-14 md:py-0 '>
             <div className="text-center md:text-left flex justify-between flex-col min-h-[60vh]">
@@ -153,16 +168,6 @@ export default function SlideShow() {
                           }
                         }}
 
-                        // animate={{
-                        //   y: [0, -30, 0],
-                        // }}
-                        // transition={{
-                        //   duration: 3,
-                        //   repeat: Infinity,
-                        //   ease: "easeInOut",
-                        // }}
-
-
                         onClick={() => handleActiveData(item)}
                         className="grid grid-cols-2 place-items-center cursor-pointer  rounded-full" key={item.id}>
 
@@ -170,46 +175,6 @@ export default function SlideShow() {
                       </motion.div>
                     )
                   })}
-
-
-{/* {slideShowData.map((item, index) => {
-  return (
-    <motion.div
-      key={item.id}
-      initial={{ opacity: 1, scale: 1 }}
-      animate={{
-        x: [0, -10, 10, -8, 8, 0], // Reduced horizontal swing
-        y: [0, -5, 5, -4, 4, 0],   // Reduced vertical float
-        opacity: [1, 1, 1, 1, 1, 1], // Always visible
-      }}
-      transition={{
-        duration: 4,                 // Smooth animation
-        repeat: Infinity,            // Loop indefinitely
-        ease: "easeInOut",
-        delay: index * 0.3,          // Staggered animation start
-      }}
-      onClick={() => handleActiveData(item)}
-      className="absolute"
-      style={{
-        width: "80px",
-        height: "80px",
-        top: `${50 + 30 * Math.sin((index * Math.PI) / 3)}%`, // Position in a circle
-        left: `${50 + 30 * Math.cos((index * Math.PI) / 3)}%`,
-        transform: "translate(-50%, -50%)",
-      }}
-    >
-      <Image
-        src={item.image}
-        width={80}
-        height={80}
-        className="hover:rotate-[360deg] duration-500 border-x-4 shadow-box border-spacing-2 border-lime-100 rounded-full h-[80px] w-[80px]"
-        alt=""
-      />
-    </motion.div>
-  );
-})} */}
-
-
 
 
                 </div>
